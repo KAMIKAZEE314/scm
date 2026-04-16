@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
-import argparse
 import os
+import sys
+import pathlib as pth
 
-parser = argparse.ArgumentParser(description="scm")
-parser.add_argument("action", type=str, help="Die Aktion von scm")
+def main():
+	if len(sys.argv) < 2:
+		print("Usage: scm [action] [arguments]")
+		sys.exit()
+	else:
+		action = sys.argv[1]
 
-args = parser.parse_args()
+	if action == "init":
+		pth.Path(".scm").mkdir()
+	elif action == "add":
+		pass
 
-if args.action == "init":
-	os.system("mkdir .scm")
+if __name__ == "__main__":
+	main()
